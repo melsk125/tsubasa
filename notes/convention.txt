@@ -1,0 +1,7 @@
+Convention
+
+Files
+Use UTF-8
+Use unix newline (LF)
+
+
