@@ -1,0 +1,90 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: May 26, 2012 at 06:50 PM
+-- Server version: 5.5.9
+-- PHP Version: 5.3.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `tsubasa`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsubasa_dungeon`
+--
+
+CREATE TABLE `tsubasa_dungeon` (
+  `dungeon_id` int(10) unsigned zerofill NOT NULL,
+  `dungeon_name` varchar(100) NOT NULL,
+  `dungeon_explanation` text NOT NULL,
+  `dungeon_attempt_count` int(11) NOT NULL DEFAULT '0',
+  `dungeon_victory_count` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`dungeon_id`),
+  UNIQUE KEY `dungeon_name` (`dungeon_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsubasa_lesson`
+--
+
+CREATE TABLE `tsubasa_lesson` (
+  `lesson_id` int(10) unsigned zerofill NOT NULL,
+  `lesson_name` varchar(100) NOT NULL,
+  `skill_id` int(10) unsigned zerofill NOT NULL,
+  PRIMARY KEY (`lesson_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsubasa_lesson_entry`
+--
+
+CREATE TABLE `tsubasa_lesson_entry` (
+  `lesson_entry_id` int(10) unsigned zerofill NOT NULL,
+  `lesson_enry_page_no` int(11) NOT NULL,
+  `lesson_entry_name` varchar(100) NOT NULL,
+  `lesson_id` int(10) unsigned zerofill NOT NULL,
+  `lesson_entry_text` text NOT NULL,
+  PRIMARY KEY (`lesson_entry_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsubasa_skill`
+--
+
+CREATE TABLE `tsubasa_skill` (
+  `skill_id` int(11) unsigned zerofill NOT NULL,
+  `skill_name` varchar(100) NOT NULL,
+  `skill_explanation` text NOT NULL,
+  PRIMARY KEY (`skill_id`),
+  UNIQUE KEY `skill_name` (`skill_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsubasa_user`
+--
+
+CREATE TABLE `tsubasa_user` (
+  `user_id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `user_uname` varchar(20) NOT NULL,
+  `user_password` char(32) NOT NULL,
+  `user_fullname` varchar(200) NOT NULL,
+  `user_birthday` date NOT NULL,
+  `user_exp` bigint(20) NOT NULL DEFAULT '0',
+  `user_profile` text,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_uname` (`user_uname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
